@@ -16,7 +16,7 @@ class ProductManager extends StatefulWidget {
 
   class _ProductManagerState extends State<ProductManager> {
 
-    List<String> _products = ['Food Tester'];
+    final List<String> _products = [];
 
     @override
     Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class ProductManager extends StatefulWidget {
             margin: EdgeInsets.all(10),
             child: ProductControl(addProduct: addProduct,),
           ),
-          Product(products: _products,)
-        ],
+           Expanded(child : _buildProductList(),)
+      ],
       );
     }
 
@@ -35,6 +35,16 @@ class ProductManager extends StatefulWidget {
         setState(() {
           _products.add(product);
         });
+    }
+
+    Widget _buildProductList() {
+      Widget product;
+      if (_products.length > 0) {
+        product = Product(products: _products,);
+      } else {
+        product = Center(child: Text("No Product Available"));
+      }
+      return product;
     }
 
   }
