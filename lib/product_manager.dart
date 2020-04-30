@@ -16,7 +16,7 @@ class ProductManager extends StatefulWidget {
 
   class _ProductManagerState extends State<ProductManager> {
 
-    final List<String> _products = [];
+    final List<Map<String, String>> _products = [];
 
     @override
     Widget build(BuildContext context) {
@@ -31,16 +31,22 @@ class ProductManager extends StatefulWidget {
       );
     }
 
-    void addProduct(String product) {
+    void addProduct(Map<String, String> product) {
         setState(() {
           _products.add(product);
         });
     }
 
+    void deleteProduct(int index){
+      setState(() {
+        _products.removeAt(index);
+      });
+    }
+
     Widget _buildProductList() {
       Widget product;
       if (_products.length > 0) {
-        product = Product(products: _products,);
+        product = Product(_products, deleteProduct);
       } else {
         product = Center(child: Text("No Product Available"));
       }

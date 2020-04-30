@@ -11,7 +11,7 @@ class ProductControl extends StatelessWidget {
     return RaisedButton(
       color: Theme.of(context).primaryColor,
       onPressed: (){
-          addProduct("Another Foor Tester via Function");
+          addProduct({'title' : 'Chocolate', 'image' : 'assests/food.jpg'});
       },
       child: Text("ADD"),
     );
