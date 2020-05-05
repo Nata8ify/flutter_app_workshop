@@ -5,6 +5,13 @@ import '../product_manager.dart';
 
 class HomePage extends StatelessWidget {
 
+  final List<Map<String, String>> products;
+  final Function addProduct;
+  final Function deleteProduct;
+
+  HomePage(this.products, this.addProduct, this.deleteProduct);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title:Text("EasyList"),
       ),
-      body: ProductManager(),
+      body: ProductManager(products, addProduct, deleteProduct),
     );
   }
 }
